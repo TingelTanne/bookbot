@@ -1,23 +1,40 @@
 def wordcounter(text):
     word_count = 0
     word_count = len(text.split())
-    print(word_count)
+    return word_count
 
 def lettercounter(text):
-    letters_counted = dict()
+    all_counted = dict()
     text_lowered = text.lower()
     for letter in text_lowered:
-        if letter not in letters_counted:
-            letters_counted[str(letter)] = 1
+        if letter not in all_counted:
+            all_counted[str(letter)] = 1
         else:
-            letters_counted[str(letter)] += 1
-    print(letters_counted)
+            all_counted[str(letter)] += 1
+    letters_counted = []
+    for key in all_counted:
+        if key.isalpha():
+            letters_counted.append({"letter": key, "count": all_counted[key]})
+
+    def sort_on(dict):
+        return dict["count"]
+
+    letters_counted.sort(reverse=True, key=sort_on)
+
+    return letters_counted
 
 def main():
     with open("./books/frankenstein.txt") as f:
         file_contents = f.read()
-    #wordcounter(file_contents)
-    lettercounter(file_contents)
+    total_words = wordcounter(file_contents)
+    total_letters = lettercounter(file_contents)
+
+    print("--- Begin report of books/frankenstein.txt ---")
+    print(total_words, "words found in the document\n")
+    #print()
+    for letter in total_letters:
+        print(f"The '{letter["letter"]}' character was found {letter["count"]} times")
+    
     
 
 main()
