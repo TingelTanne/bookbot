@@ -31,10 +31,9 @@ def main():
 
     print("--- Begin report of books/frankenstein.txt ---")
     print(total_words, "words found in the document\n")
-    #print()
     for letter in total_letters:
         print(f"The '{letter["letter"]}' character was found {letter["count"]} times")
-    
+    print("--- End report ---")
     
 
 main()
