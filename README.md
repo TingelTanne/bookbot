@@ -1,1 +1,1 @@
-BookBot is a bood.dev project!
+BookBot is a boot.dev project!
